@@ -48,8 +48,10 @@ Ejemplo: `<span data-slot>+51 999 999 999</span>`
 
 ## Notas técnicas
 
-- Respeta "reducir movimiento" del sistema: sin esa preferencia activa se ven los
-  efectos; con ella, la página se lee como catálogo estático. Ambos estados están probados.
+- Los efectos son una mejora, no un requisito: si el JavaScript falla o está
+  desactivado, la página se muestra como catálogo estático completo y legible.
+- Respeta "reducir movimiento" del sistema: con esa preferencia activa se ve el
+  mismo modo estático. Los tres estados están probados.
 - Probado en escritorio (1440px) y móvil (414px).
 - Publicada con GitHub Pages desde la rama `main`. Para actualizarla: editar,
   `git commit`, `git push` — el sitio se reconstruye solo en un par de minutos.

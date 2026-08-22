@@ -121,12 +121,12 @@ section{position:relative}
 .hr{height:1px;background:linear-gradient(90deg,var(--brass),var(--line) 55%,transparent);border:0;margin:0}
 
 /* ============ REVEAL ============ */
-[data-rv]{
+.js [data-rv]{
   opacity:0;transform:translate3d(0,26px,0);
   transition:opacity var(--t-long) var(--e),transform var(--t-long) var(--e);
   transition-delay:calc(var(--i,0) * 80ms);
 }
-[data-rv].is-in{opacity:1;transform:none}
+.js [data-rv].is-in{opacity:1;transform:none}
 
 /* ============ TARJETA DE PRODUCTO (base 3D) ============ */
 .card{
@@ -159,7 +159,7 @@ section{position:relative}
 .hero__field{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
 .hero__tile{
   position:absolute;transform-style:preserve-3d;will-change:transform,opacity;
-  opacity:0;border-radius:3px;overflow:hidden;
+  display:none;border-radius:3px;overflow:hidden;
   border:1px solid rgba(192,138,62,.2);
   box-shadow:0 40px 80px -30px rgba(0,0,0,.95);
 }
@@ -175,23 +175,28 @@ section{position:relative}
   padding-inline:var(--gut);gap:1.5rem;
 }
 .hero__eyebrow{overflow:hidden}
-.hero__eyebrow span{display:inline-block;transform:translateY(115%);transition:transform var(--t-hero) var(--e) .15s}
+.hero__eyebrow span{display:inline-block;transition:transform var(--t-hero) var(--e) .15s}
 .hero h1{max-width:16ch}
 .hero__word{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em}
 .hero__word i{
-  display:inline-block;font-style:normal;transform:translateY(110%);
+  display:inline-block;font-style:normal;
   transition:transform var(--t-hero) var(--e);
   transition-delay:calc(.25s + var(--i) * 90ms);
 }
-.hero__sub{opacity:0;transform:translateY(18px);transition:opacity var(--t-long) var(--e) .9s,transform var(--t-long) var(--e) .9s;max-width:46ch;color:var(--muted)}
-.hero.is-ready .hero__eyebrow span,.hero.is-ready .hero__word i{transform:translateY(0)}
-.hero.is-ready .hero__sub{opacity:1;transform:none}
+.hero__sub{transition:opacity var(--t-long) var(--e) .9s,transform var(--t-long) var(--e) .9s;max-width:46ch;color:var(--muted)}
+.js .hero__tile{display:block;opacity:0}
+.js .hero__eyebrow span{transform:translateY(115%)}
+.js .hero__word i{transform:translateY(110%)}
+.js .hero__sub{opacity:0;transform:translateY(18px)}
+.js .hero.is-ready .hero__eyebrow span,.js .hero.is-ready .hero__word i{transform:translateY(0)}
+.js .hero.is-ready .hero__sub{opacity:1;transform:none}
 .hero__cue{
   position:absolute;left:50%;bottom:2rem;z-index:5;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:.6rem;
-  opacity:0;transition:opacity var(--t-long) var(--e) 1.5s;
+  transition:opacity var(--t-long) var(--e) 1.5s;
 }
-.hero.is-ready .hero__cue{opacity:1}
+.js .hero__cue{opacity:0}
+.js .hero.is-ready .hero__cue{opacity:1}
 .hero__cue i{display:block;width:1px;height:52px;background:linear-gradient(var(--brass),transparent);animation:drip 2.4s var(--e) infinite}
 @keyframes drip{0%{transform:scaleY(.2);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
@@ -245,11 +250,11 @@ section{position:relative}
 @media(max-width:1000px){.table__grid{grid-template-columns:repeat(2,1fr)}}
 .plate{
   position:relative;aspect-ratio:3/4;transform-style:preserve-3d;
-  transform:rotateX(34deg) translateY(70px) scale(.92);opacity:0;
   transition:transform 1.15s var(--e),opacity var(--t-long) var(--e);
   transition-delay:calc(var(--i) * 85ms);will-change:transform,opacity;
 }
-.plate.is-in{transform:rotateX(0) translateY(0) scale(1);opacity:1}
+.js .plate{transform:rotateX(34deg) translateY(70px) scale(.92);opacity:0}
+.js .plate.is-in{transform:rotateX(0) translateY(0) scale(1);opacity:1}
 .plate .card{width:100%;height:100%;transition:transform var(--t-short) var(--e),box-shadow var(--t-short) var(--e)}
 .plate:hover .card{transform:translateY(-10px) scale(1.015);box-shadow:0 1px 0 rgba(240,206,139,.14) inset,0 40px 70px -26px rgba(0,0,0,1)}
 .plate .card::before{ /* barrido especular */
@@ -344,6 +349,7 @@ section{position:relative}
   .hero__sub{opacity:1;transform:none}
 }
 </style>
+<script>document.documentElement.className+=" js";</script>
 
 <div class="rail" aria-hidden="true"><div class="rail__fill" id="railFill"></div></div>
 
@@ -363,13 +369,13 @@ section{position:relative}
 <header class="hero" id="hero">
   <div class="hero__stage">
     <div class="hero__field" id="heroField">
-      <div class="hero__tile" data-img="i15" data-x="-38" data-y="-22" data-z="-260" data-w="20" data-r="7"></div>
-      <div class="hero__tile" data-img="i2"  data-x="34"  data-y="-28" data-z="-420" data-w="18" data-r="-6"></div>
-      <div class="hero__tile" data-img="i16" data-x="-30" data-y="26"  data-z="-140" data-w="22" data-r="-4"></div>
-      <div class="hero__tile" data-img="i4"  data-x="40"  data-y="20"  data-z="-200" data-w="21" data-r="5"></div>
-      <div class="hero__tile" data-img="i12" data-x="-46" data-y="4"   data-z="-560" data-w="14" data-r="10"></div>
-      <div class="hero__tile" data-img="i6"  data-x="46"  data-y="-4"  data-z="-600" data-w="15" data-r="-9"></div>
-      <div class="hero__tile" data-img="i13" data-x="4"   data-y="-34" data-z="-720" data-w="16" data-r="3"></div>
+      <div class="hero__tile" data-x="-38" data-y="-22" data-z="-260" data-w="20" data-r="7"><img src="img/i15.webp" alt="" decoding="async" fetchpriority="high"></div>
+      <div class="hero__tile"  data-x="34"  data-y="-28" data-z="-420" data-w="18" data-r="-6"><img src="img/i2.webp" alt="" decoding="async" fetchpriority="high"></div>
+      <div class="hero__tile" data-x="-30" data-y="26"  data-z="-140" data-w="22" data-r="-4"><img src="img/i16.webp" alt="" decoding="async" fetchpriority="high"></div>
+      <div class="hero__tile"  data-x="40"  data-y="20"  data-z="-200" data-w="21" data-r="5"><img src="img/i4.webp" alt="" decoding="async" fetchpriority="high"></div>
+      <div class="hero__tile" data-x="-46" data-y="4"   data-z="-560" data-w="14" data-r="10"><img src="img/i12.webp" alt="" decoding="async" fetchpriority="high"></div>
+      <div class="hero__tile"  data-x="46"  data-y="-4"  data-z="-600" data-w="15" data-r="-9"><img src="img/i6.webp" alt="" decoding="async" fetchpriority="high"></div>
+      <div class="hero__tile" data-x="4"   data-y="-34" data-z="-720" data-w="16" data-r="3"><img src="img/i13.webp" alt="" decoding="async" fetchpriority="high"></div>
     </div>
   </div>
   <div class="hero__scrim" aria-hidden="true"></div>
@@ -405,7 +411,7 @@ section{position:relative}
       </div>
       <div class="about__plate" data-rv style="--i:1">
         <div class="card" data-tilt>
-          <img data-img="i14" alt="Kits corporativos negros personalizados con nombre, listos para armado">
+          <img src="img/i14.webp" alt="Kits corporativos negros personalizados con nombre, listos para armado" decoding="async">
           <span class="card__tag">Armado y personalización individual</span>
         </div>
       </div>
@@ -425,15 +431,15 @@ section{position:relative}
 
     <div class="cyl">
       <div class="cyl__ring" id="cylRing">
-        <div class="cyl__item"><div class="card"><img data-img="i4" alt="Termo, tomatodo, taza y lapicero con logo grabado"><span class="card__tag">Tomatodos y tazas</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i2" alt="Mochila, tomatodo, taza y cooler personalizados"><span class="card__tag">Mochilas y morrales</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i5" alt="Vasos térmicos, libretas y bolsas de papel personalizadas"><span class="card__tag">Vasos térmicos</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i7" alt="Bolsas de tela ecológicas en distintos tamaños"><span class="card__tag">Bolsas ecológicas</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i8" alt="Bolsas reutilizables de colores con logo impreso"><span class="card__tag">Bolsas impresas</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i9" alt="Camisas, chalecos de seguridad y polos corporativos bordados"><span class="card__tag">Uniformes y polos</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i3" alt="Mesa con lapiceros, llaveros, libretas y accesorios corporativos"><span class="card__tag">Escritorio y llaveros</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i6" alt="Bolsas de tela con monograma y neceseres personalizados"><span class="card__tag">Neceseres y bolsas</span></div></div>
-        <div class="cyl__item"><div class="card"><img data-img="i1" alt="Lote de artículos embolsados individualmente listos para despacho"><span class="card__tag">Embolsado unitario</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i4.webp" alt="Termo, tomatodo, taza y lapicero con logo grabado" decoding="async"><span class="card__tag">Tomatodos y tazas</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i2.webp" alt="Mochila, tomatodo, taza y cooler personalizados" decoding="async"><span class="card__tag">Mochilas y morrales</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i5.webp" alt="Vasos térmicos, libretas y bolsas de papel personalizadas" decoding="async"><span class="card__tag">Vasos térmicos</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i7.webp" alt="Bolsas de tela ecológicas en distintos tamaños" decoding="async"><span class="card__tag">Bolsas ecológicas</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i8.webp" alt="Bolsas reutilizables de colores con logo impreso" decoding="async"><span class="card__tag">Bolsas impresas</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i9.webp" alt="Camisas, chalecos de seguridad y polos corporativos bordados" decoding="async"><span class="card__tag">Uniformes y polos</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i3.webp" alt="Mesa con lapiceros, llaveros, libretas y accesorios corporativos" decoding="async"><span class="card__tag">Escritorio y llaveros</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i6.webp" alt="Bolsas de tela con monograma y neceseres personalizados" decoding="async"><span class="card__tag">Neceseres y bolsas</span></div></div>
+        <div class="cyl__item"><div class="card"><img src="img/i1.webp" alt="Lote de artículos embolsados individualmente listos para despacho" decoding="async"><span class="card__tag">Embolsado unitario</span></div></div>
       </div>
     </div>
 
@@ -462,14 +468,14 @@ section{position:relative}
     </div>
 
     <div class="table__grid" id="tableGrid">
-      <div class="plate" style="--i:0"><div class="card"><img data-img="i13" alt="Caja de regalo premium abierta con set de accesorios"><span class="card__tag">Caja rígida a medida</span></div></div>
-      <div class="plate" style="--i:1"><div class="card"><img data-img="i15" alt="Set premium negro con termo, estuche y accesorios grabados"><span class="card__tag">Set ejecutivo</span></div></div>
-      <div class="plate" style="--i:2"><div class="card"><img data-img="i16" alt="Kit de bienvenida en tonos tierra con termo y libreta"><span class="card__tag">Kit de bienvenida</span></div></div>
-      <div class="plate" style="--i:3"><div class="card"><img data-img="i12" alt="Libretas y estuches de cuero con iniciales grabadas"><span class="card__tag">Cuero con iniciales</span></div></div>
-      <div class="plate" style="--i:4"><div class="card"><img data-img="i17" alt="Caja premium con audífonos, cargador y tarjeta impresa"><span class="card__tag">Tecnología</span></div></div>
-      <div class="plate" style="--i:5"><div class="card"><img data-img="i10" alt="Estuche rígido con micrófonos inalámbricos en espuma troquelada"><span class="card__tag">Espuma troquelada</span></div></div>
-      <div class="plate" style="--i:6"><div class="card"><img data-img="i14" alt="Producción de kits negros personalizados con nombre"><span class="card__tag">Nombre por nombre</span></div></div>
-      <div class="plate" style="--i:7"><div class="card"><img data-img="i11" alt="Lote de estuches premium alineados antes del despacho"><span class="card__tag">Control de lote</span></div></div>
+      <div class="plate" style="--i:0"><div class="card"><img src="img/i13.webp" alt="Caja de regalo premium abierta con set de accesorios" decoding="async"><span class="card__tag">Caja rígida a medida</span></div></div>
+      <div class="plate" style="--i:1"><div class="card"><img src="img/i15.webp" alt="Set premium negro con termo, estuche y accesorios grabados" decoding="async"><span class="card__tag">Set ejecutivo</span></div></div>
+      <div class="plate" style="--i:2"><div class="card"><img src="img/i16.webp" alt="Kit de bienvenida en tonos tierra con termo y libreta" decoding="async"><span class="card__tag">Kit de bienvenida</span></div></div>
+      <div class="plate" style="--i:3"><div class="card"><img src="img/i12.webp" alt="Libretas y estuches de cuero con iniciales grabadas" decoding="async"><span class="card__tag">Cuero con iniciales</span></div></div>
+      <div class="plate" style="--i:4"><div class="card"><img src="img/i17.webp" alt="Caja premium con audífonos, cargador y tarjeta impresa" decoding="async"><span class="card__tag">Tecnología</span></div></div>
+      <div class="plate" style="--i:5"><div class="card"><img src="img/i10.webp" alt="Estuche rígido con micrófonos inalámbricos en espuma troquelada" decoding="async"><span class="card__tag">Espuma troquelada</span></div></div>
+      <div class="plate" style="--i:6"><div class="card"><img src="img/i14.webp" alt="Producción de kits negros personalizados con nombre" decoding="async"><span class="card__tag">Nombre por nombre</span></div></div>
+      <div class="plate" style="--i:7"><div class="card"><img src="img/i11.webp" alt="Lote de estuches premium alineados antes del despacho" decoding="async"><span class="card__tag">Control de lote</span></div></div>
     </div>
   </div>
 </section>
@@ -477,7 +483,7 @@ section{position:relative}
 
 <!-- ══════════ BANDA ══════════ -->
 <section class="band" id="band">
-  <img data-img="i11" alt="Lote de estuches premium alineados en mesa antes del control de salida">
+  <img src="img/i11.webp" alt="Lote de estuches premium alineados en mesa antes del control de salida" decoding="async">
   <div class="band__in">
     <span class="label" data-rv>Control de salida</span>
     <h3 data-rv style="--i:1">Cada lote se revisa unidad por unidad antes de salir de planta.</h3>
@@ -498,10 +504,10 @@ section{position:relative}
           <li><b>Rotulado</b><span>Identificación por destino</span></li>
         </ul>
       </div>
-      <figure class="floor__panel" style="margin:0"><img data-img="i18" alt="Almacén con cajas rotuladas apiladas por lote"><figcaption class="floor__cap label">Almacén · rotulado por lote</figcaption></figure>
-      <figure class="floor__panel" style="margin:0"><img data-img="i19" alt="Operaria manipulando cajas durante el armado de pedidos"><figcaption class="floor__cap label">Armado de pedidos</figcaption></figure>
-      <figure class="floor__panel" style="margin:0"><img data-img="i20" alt="Nave industrial con mercadería organizada y zona de trabajo"><figcaption class="floor__cap label">Nave de producción</figcaption></figure>
-      <figure class="floor__panel" style="margin:0"><img data-img="i21" alt="Zona de despacho despejada con mercadería lista para salida"><figcaption class="floor__cap label">Zona de despacho</figcaption></figure>
+      <figure class="floor__panel" style="margin:0"><img src="img/i18.webp" alt="Almacén con cajas rotuladas apiladas por lote" decoding="async"><figcaption class="floor__cap label">Almacén · rotulado por lote</figcaption></figure>
+      <figure class="floor__panel" style="margin:0"><img src="img/i19.webp" alt="Operaria manipulando cajas durante el armado de pedidos" decoding="async"><figcaption class="floor__cap label">Armado de pedidos</figcaption></figure>
+      <figure class="floor__panel" style="margin:0"><img src="img/i20.webp" alt="Nave industrial con mercadería organizada y zona de trabajo" decoding="async"><figcaption class="floor__cap label">Nave de producción</figcaption></figure>
+      <figure class="floor__panel" style="margin:0"><img src="img/i21.webp" alt="Zona de despacho despejada con mercadería lista para salida" decoding="async"><figcaption class="floor__cap label">Zona de despacho</figcaption></figure>
     </div>
   </div>
 </section>
@@ -511,10 +517,10 @@ section{position:relative}
   <div class="pin__stage" style="background:linear-gradient(180deg,var(--ink),#0D0B09 50%,var(--ink))">
     <div class="dolly">
       <div class="dolly__space" id="dollySpace">
-        <div class="dolly__slab"><div class="card card--doc"><img data-img="i22" alt="Carga de mercadería en camión desde el andén"><span class="card__tag">Carga en andén</span></div></div>
-        <div class="dolly__slab"><div class="card card--doc"><img data-img="i23" alt="Camión de transporte de carga estacionado para embarque"><span class="card__tag">Embarque</span></div></div>
-        <div class="dolly__slab"><div class="card card--doc"><img data-img="i24" alt="Operarios asegurando bultos en la tolva del camión"><span class="card__tag">Estiba asegurada</span></div></div>
-        <div class="dolly__slab"><div class="card card--doc"><img data-img="i25" alt="Camión cargado y sellado listo para salida a ruta"><span class="card__tag">Salida a ruta</span></div></div>
+        <div class="dolly__slab"><div class="card card--doc"><img src="img/i22.webp" alt="Carga de mercadería en camión desde el andén" decoding="async"><span class="card__tag">Carga en andén</span></div></div>
+        <div class="dolly__slab"><div class="card card--doc"><img src="img/i23.webp" alt="Camión de transporte de carga estacionado para embarque" decoding="async"><span class="card__tag">Embarque</span></div></div>
+        <div class="dolly__slab"><div class="card card--doc"><img src="img/i24.webp" alt="Operarios asegurando bultos en la tolva del camión" decoding="async"><span class="card__tag">Estiba asegurada</span></div></div>
+        <div class="dolly__slab"><div class="card card--doc"><img src="img/i25.webp" alt="Camión cargado y sellado listo para salida a ruta" decoding="async"><span class="card__tag">Salida a ruta</span></div></div>
       </div>
     </div>
     <div class="dolly__veil" aria-hidden="true"></div>
@@ -570,45 +576,32 @@ section{position:relative}
 
 <style>
 /* ==== Fallback accesible: sin movimiento, la página se lee como catálogo ==== */
-.reduced .pin{height:auto !important}
-.reduced .pin__stage{position:static;height:auto;overflow:visible;padding:clamp(4rem,10vh,7rem) 0;display:block}
-.reduced .cyl{height:auto;perspective:none;padding:clamp(2rem,5vw,3rem) var(--gut)}
-.reduced .cyl__ring{position:static;transform:none !important;width:auto;height:auto;
+.reduced .pin,html:not(.js) .pin{height:auto !important}
+.reduced .pin__stage,html:not(.js) .pin__stage{position:static;height:auto;overflow:visible;padding:clamp(4rem,10vh,7rem) 0;display:block}
+.reduced .cyl,html:not(.js) .cyl{height:auto;perspective:none;padding:clamp(2rem,5vw,3rem) var(--gut)}
+.reduced .cyl__ring,html:not(.js) .cyl__ring{position:static;transform:none !important;width:auto;height:auto;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(.7rem,1.4vw,1.2rem)}
-.reduced .cyl__item{position:static;width:auto;height:auto;margin:0;aspect-ratio:3/4;opacity:1 !important;transform:none !important}
-.reduced .hero{height:auto;min-height:0;padding:clamp(6rem,16vh,10rem) 0 clamp(3rem,8vh,5rem)}
-.reduced .hero__stage,.reduced .hero__cue,.reduced .hero__scrim{display:none}
-.reduced .hero__copy{position:static;inset:auto}
-.reduced .floor__track{flex-wrap:wrap;transform:none !important;height:auto;justify-content:center}
-.reduced .floor__panel img{transform:none !important}
-.reduced .band img{transform:none !important}
-.reduced .dolly{position:static;perspective:none;padding:clamp(2rem,5vw,3rem) var(--gut)}
-.reduced .dolly__space{position:static;transform:none !important;display:grid;
+.reduced .cyl__item,html:not(.js) .cyl__item{position:static;width:auto;height:auto;margin:0;aspect-ratio:3/4;opacity:1 !important;transform:none !important}
+.reduced .hero,html:not(.js) .hero{height:auto;min-height:0;padding:clamp(6rem,16vh,10rem) 0 clamp(3rem,8vh,5rem)}
+.reduced .hero__stage,html:not(.js) .hero__stage,.reduced .hero__cue,html:not(.js) .hero__cue,.reduced .hero__scrim,html:not(.js) .hero__scrim{display:none}
+.reduced .hero__copy,html:not(.js) .hero__copy{position:static;inset:auto}
+.reduced .floor__track,html:not(.js) .floor__track{flex-wrap:wrap;transform:none !important;height:auto;justify-content:center}
+.reduced .floor__panel img,html:not(.js) .floor__panel img{transform:none !important}
+.reduced .band img,html:not(.js) .band img{transform:none !important}
+.reduced .dolly,html:not(.js) .dolly{position:static;perspective:none;padding:clamp(2rem,5vw,3rem) var(--gut)}
+.reduced .dolly__space,html:not(.js) .dolly__space{position:static;transform:none !important;display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(.7rem,1.4vw,1.2rem)}
-.reduced .dolly__slab{position:static;width:auto;height:auto;margin:0;aspect-ratio:3/4;opacity:1 !important;transform:none !important}
-.reduced .dolly__veil{display:none}
-.reduced .dolly__copy{position:static;inset:auto;padding:0 var(--gut);margin-bottom:2rem}
+.reduced .dolly__slab,html:not(.js) .dolly__slab{position:static;width:auto;height:auto;margin:0;aspect-ratio:3/4;opacity:1 !important;transform:none !important}
+.reduced .dolly__veil,html:not(.js) .dolly__veil{display:none}
+.reduced .dolly__copy,html:not(.js) .dolly__copy{position:static;inset:auto;padding:0 var(--gut);margin-bottom:2rem}
 </style>
 
 <script>
-const IMG={"i1":"img/i1.webp","i2":"img/i2.webp","i3":"img/i3.webp","i4":"img/i4.webp","i5":"img/i5.webp","i6":"img/i6.webp","i7":"img/i7.webp","i8":"img/i8.webp","i9":"img/i9.webp","i10":"img/i10.webp","i11":"img/i11.webp","i12":"img/i12.webp","i13":"img/i13.webp","i14":"img/i14.webp","i15":"img/i15.webp","i16":"img/i16.webp","i17":"img/i17.webp","i18":"img/i18.webp","i19":"img/i19.webp","i20":"img/i20.webp","i21":"img/i21.webp","i22":"img/i22.webp","i23":"img/i23.webp","i24":"img/i24.webp","i25":"img/i25.webp"};
 (function(){
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   var isReduced = reduce.matches;
   if (isReduced) document.body.classList.add("reduced");
-
-  /* ---------- 1. Imágenes (data URI → src) ---------- */
-  document.querySelectorAll("[data-img]").forEach(function(el){
-    var src = IMG[el.dataset.img];
-    if (!src) return;
-    if (el.tagName === "IMG") { el.src = src; el.decoding = "async"; }
-    else {
-      var im = document.createElement("img");
-      im.src = src; im.alt = ""; im.decoding = "async";
-      el.appendChild(im);
-    }
-  });
 
   /* ---------- 2. Titular: una línea por palabra para el barrido de entrada ---------- */
   var title = document.getElementById("heroTitle");
