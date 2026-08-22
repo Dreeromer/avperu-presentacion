@@ -1,13 +1,21 @@
 # Carta de presentación — AV Perú Corporation
 
-Página web de una sola pieza. `index.html` es **autónomo**: fotos y tipografías van
-incrustadas dentro del archivo, no pide nada a internet. Funciona con doble clic,
-desde un USB o sin conexión.
+**En línea:** https://dreeromer.github.io/avperu-presentacion/
+
+Dos versiones del mismo diseño:
+
+| Archivo | Para qué |
+|---|---|
+| `index.html` + `img/` + `fonts/` | La versión publicada. Carga rápido porque las fotos son archivos aparte. |
+| `carta-offline.html` | Un solo archivo de 3.5 MB con todo dentro. Para USB, adjuntar por correo o presentar sin internet. |
+
+Ninguna de las dos pide nada a servidores externos.
 
 ## Qué falta rellenar
 
-Abre `index.html` en cualquier editor de texto, busca `data-slot` (son 4 líneas
-seguidas, cerca del final) y reemplaza el texto entre corchetes:
+Hay que hacerlo en **los dos** archivos (`index.html` y `carta-offline.html`).
+Busca `data-slot` — son 4 líneas seguidas, cerca del final — y reemplaza el texto
+entre corchetes:
 
     <li><b>Teléfono</b><span data-slot>[ teléfono ]</span></li>
     <li><b>Correo</b><span data-slot>[ correo ]</span></li>
@@ -43,5 +51,6 @@ Ejemplo: `<span data-slot>+51 999 999 999</span>`
 - Respeta "reducir movimiento" del sistema: sin esa preferencia activa se ven los
   efectos; con ella, la página se lee como catálogo estático. Ambos estados están probados.
 - Probado en escritorio (1440px) y móvil (414px).
-- Peso: 3.5 MB. Para publicarla en web conviene subirla tal cual (GitHub Pages,
-  Netlify o el hosting propio); no necesita carpeta de imágenes.
+- Publicada con GitHub Pages desde la rama `main`. Para actualizarla: editar,
+  `git commit`, `git push` — el sitio se reconstruye solo en un par de minutos.
+- Peso en línea: 43 KB de HTML + 2.4 MB de fotos que llegan en paralelo.
