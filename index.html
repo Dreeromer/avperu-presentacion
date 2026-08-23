@@ -1,3 +1,7 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AV Perú Corporation — merchandising corporativo: líneas Clásica y Premium, desarrollo de producto a medida, planta propia y entrega a nivel nacional hasta el destinatario final.">
+<meta name="theme-color" content="#0A0908">
 <title>AV Perú Corporation</title>
 <style>
 /* Tipografías locales */
@@ -337,6 +341,78 @@ section{position:relative}
 .foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:2.5rem var(--gut) 2rem;border-top:1px solid var(--line-soft);margin-top:clamp(3rem,8vh,6rem)}
 .foot p{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
 
+
+/* ============ 04 · DESARROLLO A MEDIDA ============ */
+.open{padding:clamp(6rem,14vh,11rem) 0;border-top:1px solid var(--line-soft)}
+.open__grid{
+  margin-top:clamp(2.5rem,6vw,4rem);
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+}
+@media(max-width:980px){.open__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.open__grid{grid-template-columns:1fr}}
+.open__cell{background:var(--ink);padding:clamp(1.4rem,2.6vw,2.2rem);transition:background var(--t-short) var(--e)}
+.open__cell:hover{background:var(--ink-1)}
+.open__cell h3{margin:.8rem 0 .6rem}
+.open__cell p{color:var(--muted);font-size:.96rem}
+.open__tail{
+  margin-top:clamp(2rem,4vw,3rem);padding-top:clamp(1.4rem,3vw,2rem);
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);
+  gap:clamp(1rem,4vw,3.5rem);align-items:start;
+}
+@media(max-width:860px){.open__tail{grid-template-columns:1fr}}
+.open__tail a{color:var(--gleam);text-decoration:none;border-bottom:1px solid rgba(192,138,62,.45)}
+.open__tail a:hover{border-bottom-color:var(--gleam)}
+
+/* ============ FRANJA DE ENTREGAS ============ */
+.facts{padding:clamp(4.5rem,11vh,8rem) 0;border-top:1px solid var(--line-soft)}
+.facts__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.8rem,4vw,3.5rem)}
+@media(max-width:860px){.facts__grid{grid-template-columns:1fr;gap:2.2rem}}
+.facts__item h3{margin:.8rem 0 .7rem}
+
+/* ============ 08 · FORMULARIO ============ */
+.contact a{text-decoration:none;border-bottom:1px solid var(--line);transition:color var(--t-micro) var(--e),border-color var(--t-micro) var(--e)}
+.contact a:hover{color:var(--gleam);border-bottom-color:var(--brass)}
+
+.ask{
+  position:relative;margin-top:clamp(3rem,8vh,5.5rem);
+  border:1px solid var(--line);
+  background:linear-gradient(160deg,rgba(23,19,14,.85),rgba(10,9,8,.35));
+  padding:clamp(1.5rem,4vw,3.2rem);
+}
+.ask__head{max-width:44rem;margin-bottom:clamp(1.6rem,3.5vw,2.6rem)}
+.ask__head h3{margin-top:.9rem}
+.ask__form{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.4vw,1.8rem)}
+@media(max-width:760px){.ask__form{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.55rem;min-width:0}
+.field--wide{grid-column:1/-1}
+.field label{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.field input,.field textarea{
+  font-family:inherit;font-size:1rem;line-height:1.5;color:var(--bone);
+  background:rgba(10,9,8,.55);border:1px solid var(--line);border-radius:2px;
+  padding:.85rem 1rem;width:100%;resize:vertical;
+  transition:border-color var(--t-micro) var(--e),background var(--t-micro) var(--e);
+}
+.field input::placeholder,.field textarea::placeholder{color:#5E5648}
+.field input:focus,.field textarea:focus{border-color:var(--brass);background:rgba(10,9,8,.85)}
+.ask__trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.ask__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;margin-top:.3rem}
+.btn{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  display:inline-block;padding:.95rem 1.7rem;border-radius:2px;border:1px solid var(--brass);
+  text-decoration:none;cursor:pointer;transition:background var(--t-micro) var(--e),color var(--t-micro) var(--e),border-color var(--t-micro) var(--e);
+}
+.btn--solid{background:var(--brass);color:var(--ink)}
+.btn--solid:hover{background:var(--gleam);border-color:var(--gleam)}
+.btn--solid[disabled]{opacity:.5;cursor:default}
+.btn--ghost{background:transparent;color:var(--gleam)}
+.btn--ghost:hover{background:rgba(192,138,62,.12)}
+.ask__note{grid-column:1/-1;font-size:.92rem;color:var(--muted);min-height:1.5em;max-width:60ch}
+.ask__note a{color:var(--gleam)}
+.ask__note.is-ok{color:var(--gleam)}
+.ask__note.is-warn{color:#D08A5A}
+
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{
@@ -359,6 +435,7 @@ section{position:relative}
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#clasico">Clásico</a></li>
     <li><a href="#premium">Premium</a></li>
+    <li><a href="#medida">A medida</a></li>
     <li><a href="#planta">Planta</a></li>
     <li><a href="#logistica">Logística</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -382,7 +459,7 @@ section{position:relative}
   <div class="hero__copy">
     <p class="label hero__eyebrow"><span>AV Perú Corporation · Merchandising corporativo</span></p>
     <h1 id="heroTitle">Merchandising que la gente conserva.</h1>
-    <p class="hero__sub">Diseño, producción y logística bajo un mismo techo. Cuidamos cada detalle para que tu marca se represente de la mejor manera.</p>
+    <p class="hero__sub">Diseño, producción y entrega a nivel nacional bajo un mismo techo. Cuidamos cada detalle para que tu marca se represente de la mejor manera.</p>
   </div>
   <div class="hero__cue" aria-hidden="true"><i></i><span class="label label--mute">Desliza</span></div>
 </header>
@@ -395,18 +472,18 @@ section{position:relative}
         <span class="sec-num">01 — Quiénes somos</span>
         <h2 data-rv>Un producto bien hecho <span class="foil">se queda</span>.</h2>
       </div>
-      <p class="body" data-rv style="--i:1">En AV Perú Corporation desarrollamos merchandising corporativo combinando calidad, diseño y creatividad. No entregamos artículos sueltos: entregamos la versión física de una marca, con el mismo criterio con el que se cuida cualquier otra pieza de su identidad.</p>
+      <p class="body" data-rv style="--i:1">En AV Perú Corporation desarrollamos merchandising corporativo combinando calidad, diseño y creatividad. No entregamos artículos sueltos: entregamos la versión física de una marca, con el mismo criterio con el que se cuida cualquier otra pieza de su identidad. Y cuando el producto que hace falta no existe en ningún catálogo, lo desarrollamos.</p>
     </div>
 
     <div class="about__grid">
       <div class="about__text">
         <p class="quote" data-rv>Un buen producto no solo comunica una marca: logra que las personas la recuerden.</p>
-        <p class="body" data-rv style="--i:1">Trabajamos sobre dos líneas — una pensada para volumen y campaña, otra para el obsequio que representa una relación — y respondemos por todo el trayecto: propuesta, muestra física, producción, armado en planta y despacho a nivel nacional hasta la guía firmada.</p>
+        <p class="body" data-rv style="--i:1">Trabajamos sobre dos líneas — una pensada para volumen y campaña, otra para el obsequio que representa una relación — y sobre todo lo que haya que desarrollar fuera de ellas cuando el proyecto lo pide. Respondemos por el trayecto completo: propuesta, muestra física, producción, armado en planta y entrega a nivel nacional hasta las manos del destinatario final.</p>
         <ul class="spec" data-rv style="--i:2">
-          <li><b>Alcance</b><span>Todo el Perú</span></li>
-          <li><b>Líneas</b><span>Clásica y Premium</span></li>
+          <li><b>Líneas</b><span>Clásica, Premium y a medida</span></li>
           <li><b>Producción</b><span>Planta propia</span></li>
-          <li><b>Cierre</b><span>Entrega con guía firmada</span></li>
+          <li><b>Entrega</b><span>Nacional, al destinatario final</span></li>
+          <li><b>Cierre</b><span>Guía firmada de vuelta</span></li>
         </ul>
       </div>
       <div class="about__plate" data-rv style="--i:1">
@@ -444,7 +521,7 @@ section{position:relative}
     </div>
 
     <div class="cyl__hud">
-      <p class="lead" data-rv>La línea que resuelve campañas, eventos y dotación de personal. Producto probado, marcado consistente y tiempos que se cumplen.</p>
+      <p class="lead" data-rv>La línea que resuelve campañas, eventos y dotación de personal. Producto probado, marcado consistente y tiempos que se cumplen. Lo que ves aquí es una selección: el catálogo es bastante más amplio, y lo que no está se desarrolla.</p>
       <ul class="spec" data-rv style="--i:1">
         <li><b>Drinkware</b><span>Tomatodos · Termos · Tazas</span></li>
         <li><b>Textil</b><span>Polos · Camisas · Chalecos</span></li>
@@ -464,7 +541,7 @@ section{position:relative}
         <span class="sec-num">03 — Línea Premium</span>
         <h2 data-rv>Cuando el obsequio <span class="foil">representa una relación</span>.</h2>
       </div>
-      <p class="body" data-rv style="--i:1">Caja rígida, cuero, tecnología y personalización nombre por nombre. Es la línea para el cliente que se quiere retener, el directivo que se quiere reconocer y la fecha que no se repite.</p>
+      <p class="body" data-rv style="--i:1">Caja rígida, cuero, tecnología y personalización nombre por nombre. Es la línea para el cliente que se quiere retener, el directivo que se quiere reconocer y la fecha que no se repite. Y si la ocasión pide algo que no está en estas fotos, se diseña.</p>
     </div>
 
     <div class="table__grid" id="tableGrid">
@@ -481,6 +558,33 @@ section{position:relative}
 </section>
 
 
+<!-- ══════════ 04 A MEDIDA ══════════ -->
+<section class="open" id="medida">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-num">04 — Desarrollo a medida</span>
+        <h2 data-rv style="max-width:15ch">Las dos líneas son el punto de partida, <span class="foil">no el límite</span>.</h2>
+      </div>
+      <p class="body" data-rv style="--i:1">Buena parte de lo que producimos empezó como un pedido que no figuraba en ningún catálogo: un empaque que tenía que caber en un espacio exacto, un kit armado para una campaña puntual, un producto pensado desde cero para una fecha que no se repite. Si tienes la idea, nosotros vemos cómo se fabrica.</p>
+    </div>
+
+    <div class="open__grid" data-rv>
+      <div class="open__cell"><span class="label">01</span><h3>Producto desde cero</h3><p>Partimos de una idea, un boceto o una referencia. Definimos material y proceso, y sacamos una muestra física antes de producir nada.</p></div>
+      <div class="open__cell"><span class="label">02</span><h3>Kits y sets armados</h3><p>Varios artículos en un solo empaque, armados y embolsados en planta — incluso nombre por nombre cuando el envío es personal.</p></div>
+      <div class="open__cell"><span class="label">03</span><h3>Empaque y presentación</h3><p>Caja rígida, espuma troquelada, bolsa impresa o tarjeta incluida: el envoltorio se resuelve junto con el producto, no después.</p></div>
+      <div class="open__cell"><span class="label">04</span><h3>Técnicas de marcado</h3><p>Bordado, serigrafía, grabado láser, tampografía, sublimación y full color. La técnica se elige según el material y el tiraje.</p></div>
+      <div class="open__cell"><span class="label">05</span><h3>Ediciones limitadas</h3><p>Series cortas para aniversarios, lanzamientos, reconocimientos internos o eventos que ocurren una sola vez.</p></div>
+      <div class="open__cell"><span class="label">06</span><h3>Abastecimiento continuo</h3><p>Reposición programada de uniformes, dotación de personal y material de campaña durante todo el año, con stock reservado.</p></div>
+    </div>
+
+    <div class="open__tail">
+      <p class="lead" data-rv style="max-width:24ch">¿No ves lo que necesitas? Pregúntalo igual.</p>
+      <p class="body" data-rv style="--i:1">Casi todos nuestros proyectos empiezan con una consulta que ningún catálogo respondía. <a href="#mensaje">Cuéntanos qué tienes en mente</a> y te decimos si se puede hacer, cuánto cuesta y en cuánto tiempo está listo.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ BANDA ══════════ -->
 <section class="band" id="band">
   <img src="img/i11.webp" alt="Lote de estuches premium alineados en mesa antes del control de salida" decoding="async">
@@ -495,7 +599,7 @@ section{position:relative}
   <div class="pin__stage">
     <div class="floor__track" id="floorTrack">
       <div class="floor__intro">
-        <span class="sec-num">04 — Nuestra planta</span>
+        <span class="sec-num">05 — Nuestra planta</span>
         <h2>Todo pasa por <span class="foil">nuestras manos</span>.</h2>
         <p class="body">Almacenaje, control de lotes, rotulado y armado de kits bajo un mismo techo. Ver el proceso completo es lo que nos permite responder por cada unidad que sale.</p>
         <ul class="spec">
@@ -526,20 +630,44 @@ section{position:relative}
     <div class="dolly__veil" aria-hidden="true"></div>
     <div class="dolly__copy">
       <div>
-        <span class="sec-num">05 — Logística integral</span>
-        <h2 style="max-width:14ch">El ciclo cierra con la <span class="foil">guía firmada</span>.</h2>
+        <span class="sec-num">06 — Logística y entregas</span>
+        <h2 style="max-width:15ch">Lo llevamos hasta <span class="foil">el cliente final</span>.</h2>
       </div>
-      <p class="lead">Gestionamos el transporte a nivel nacional durante todo el proceso, hasta la entrega confirmada. Nada queda a cargo del cliente.</p>
+      <p class="lead">Nosotros nos encargamos de la entrega: transporte a nivel nacional hasta las manos del destinatario, en la oficina, la sede o el domicilio que corresponda. Nada de eso queda a cargo del cliente.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════ 06 PROCESO ══════════ -->
+
+<!-- ══════════ FRANJA DE ENTREGAS ══════════ -->
+<section class="facts">
+  <div class="wrap">
+    <div class="facts__grid">
+      <div class="facts__item" data-rv>
+        <span class="label">Cobertura</span>
+        <h3>Todo el país</h3>
+        <p class="body">Lima, provincia o zona alejada: coordinamos el transporte que corresponde a cada destino y lo cotizamos desde el inicio, sin costos que aparecen a mitad de camino.</p>
+      </div>
+      <div class="facts__item" data-rv style="--i:1">
+        <span class="label">Entrega final</span>
+        <h3>Hasta el destinatario</h3>
+        <p class="body">No dejamos el pedido en una agencia para que alguien lo recoja. La entrega llega a la dirección de cada destinatario y se confirma con la guía firmada de vuelta.</p>
+      </div>
+      <div class="facts__item" data-rv style="--i:2">
+        <span class="label">Multidestino</span>
+        <h3>Un pedido, varias sedes</h3>
+        <p class="body">Rotulamos y despachamos por destino desde planta, con listado nominal cuando el envío es persona por persona. Un solo pedido, tantas direcciones como haga falta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 07 PROCESO ══════════ -->
 <section class="flow" id="proceso">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <span class="sec-num">06 — Cómo trabajamos</span>
+        <span class="sec-num">07 — Cómo trabajamos</span>
         <h2 data-rv>Cuatro pasos, <span class="foil">sin sorpresas</span>.</h2>
       </div>
       <p class="body" data-rv style="--i:1">El orden importa: cada etapa tiene una aprobación antes de avanzar a la siguiente. Así es como se evita la caja que llega tarde o el logo que salió del tono.</p>
@@ -548,7 +676,7 @@ section{position:relative}
       <div class="step" data-rv><span class="step__n">01</span><h3>Brief y propuesta</h3><p class="body">Definimos objetivo, público, cantidad y fecha de entrega. Proponemos producto, técnica de marcado y presupuesto cerrado.</p></div>
       <div class="step" data-rv style="--i:1"><span class="step__n">02</span><h3>Muestra y aprobación</h3><p class="body">Arte aplicado sobre el producto real, no sobre un render. Nada entra a producción sin aprobación escrita del cliente.</p></div>
       <div class="step" data-rv style="--i:2"><span class="step__n">03</span><h3>Producción y armado</h3><p class="body">Marcado, control de lote y armado de kits en planta propia, con empaque unitario cuando el pedido lo requiere.</p></div>
-      <div class="step" data-rv style="--i:3"><span class="step__n">04</span><h3>Despacho y guía firmada</h3><p class="body">Transporte a nivel nacional, seguimiento del envío y confirmación de entrega con la guía firmada de vuelta.</p></div>
+      <div class="step" data-rv style="--i:3"><span class="step__n">04</span><h3>Despacho y entrega</h3><p class="body">Nos hacemos cargo del transporte a nivel nacional, seguimos el envío y entregamos en la puerta del destinatario final, con la guía firmada de vuelta.</p></div>
     </div>
   </div>
 </section>
@@ -556,16 +684,47 @@ section{position:relative}
 <!-- ══════════ 07 CIERRE ══════════ -->
 <section class="end" id="contacto">
   <div class="wrap">
-    <span class="sec-num">07 — Conversemos</span>
+    <span class="sec-num">08 — Conversemos</span>
     <h2 data-rv style="max-width:18ch">Cuéntanos la fecha y <span class="foil">nosotros vemos el resto</span>.</h2>
     <div class="end__grid">
-      <p class="lead" data-rv style="--i:1">Envíanos el objetivo, la cantidad aproximada y el día en que debe estar entregado. Respondemos con propuesta de producto y presupuesto cerrado.</p>
+      <p class="lead" data-rv style="--i:1">Cuéntanos el objetivo, la cantidad aproximada y el día en que debe estar entregado. Respondemos con propuesta de producto y presupuesto cerrado. Si lo que necesitas no aparece en esta carta, pregúntalo igual.</p>
       <ul class="contact" data-rv style="--i:2">
-        <li><b>Teléfono</b><span data-slot>[ teléfono ]</span></li>
-        <li><b>Correo</b><span data-slot>[ correo ]</span></li>
-        <li><b>Web</b><span data-slot>[ web ]</span></li>
-        <li><b>Dirección</b><span data-slot>[ dirección ]</span></li>
+        <li><b>Teléfono</b><span><a href="tel:+51987262309">+51 987 262 309</a></span></li>
+        <li><b>WhatsApp</b><span><a href="https://wa.me/51987262309" target="_blank" rel="noopener">+51 987 262 309</a></span></li>
+        <li><b>Correo</b><span><a href="mailto:comercial@grupoalvas.com">comercial@grupoalvas.com</a></span></li>
       </ul>
+    </div>
+
+    <div class="ask" id="mensaje">
+      <div class="ask__head">
+        <span class="label">Escríbenos</span>
+        <h3 data-rv>Déjanos tu nombre y lo que tienes en mente. Te respondemos con una propuesta.</h3>
+      </div>
+
+      <form class="ask__form" id="askForm" novalidate>
+        <div class="field">
+          <label for="f-nombre">Nombre o empresa</label>
+          <input id="f-nombre" name="nombre" type="text" autocomplete="organization" required placeholder="Ej. Constructora Vega S.A.C.">
+        </div>
+        <div class="field">
+          <label for="f-contacto">Correo o teléfono</label>
+          <input id="f-contacto" name="contacto" type="text" autocomplete="email" required placeholder="Para poder responderte">
+        </div>
+        <div class="field field--wide">
+          <label for="f-mensaje">Qué necesitas</label>
+          <textarea id="f-mensaje" name="mensaje" rows="4" required placeholder="Cantidad aproximada, para qué es y para cuándo lo necesitas. Si es algo que no viste en esta página, descríbelo igual."></textarea>
+        </div>
+
+        <input class="ask__trap" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="ask__actions">
+          <button class="btn btn--solid" type="submit" id="askSend">Enviar mensaje</button>
+          <a class="btn btn--ghost" id="askWa" href="https://wa.me/51987262309" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+
+        <p class="ask__note" id="askNote" role="status" aria-live="polite"></p>
+        <noscript><p class="ask__note">Para enviar el formulario hace falta JavaScript. Escríbenos a <a href="mailto:comercial@grupoalvas.com">comercial@grupoalvas.com</a> o al <a href="tel:+51987262309">+51 987 262 309</a>.</p></noscript>
+      </form>
     </div>
   </div>
   <div class="foot">
@@ -792,5 +951,105 @@ section{position:relative}
   window.addEventListener("resize", layout, { passive:true });
   window.addEventListener("orientationchange", layout);
   requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+/* ══════════════════════ Formulario de contacto ══════════════════════ */
+(function(){
+  "use strict";
+
+  var CORREO   = "comercial@grupoalvas.com";
+  var WHATSAPP = "51987262309";
+
+  /* ─────────────────────────────────────────────────────────────────────
+     INTERRUPTOR DEL ENVÍO POR CORREO
+
+     Está en false a propósito. FormSubmit manda un correo de activación
+     la primera vez que alguien envía el formulario, y ese correo llega a
+     comercial@grupoalvas.com. Mientras no haya acceso a esa bandeja, el
+     formulario arma el mensaje y lo abre en WhatsApp — que sí llega hoy —
+     y deja además un enlace para mandarlo por correo.
+
+     Para encenderlo el día que tengas acceso a la bandeja:
+       1. Cambia esta línea a  var ENVIO_POR_CORREO = true;
+          (hazlo en index.html y también en carta-offline.html)
+       2. Sube el cambio, abre la página, llena el formulario y envíalo una vez.
+       3. Entra a comercial@grupoalvas.com y haz clic en el enlace de FormSubmit.
+       4. Desde ese momento cada mensaje llega solo a esa bandeja.
+     ───────────────────────────────────────────────────────────────────── */
+  var ENVIO_POR_CORREO = false;
+
+  var form = document.getElementById("askForm");
+  if (!form) return;
+
+  var note = document.getElementById("askNote");
+  var send = document.getElementById("askSend");
+  var wa   = document.getElementById("askWa");
+
+  function val(n){ var el = form.elements[n]; return el ? el.value.trim() : ""; }
+  function datos(){ return { nombre: val("nombre"), contacto: val("contacto"), mensaje: val("mensaje") }; }
+
+  function cuerpo(d){
+    var t = "Hola AV Perú, ";
+    t += d.nombre ? "les escribe " + d.nombre + "." : "quisiera una cotización.";
+    if (d.mensaje)  t += "\n\n" + d.mensaje;
+    if (d.contacto) t += "\n\nMi contacto: " + d.contacto;
+    return t;
+  }
+  function urlWa(d){ return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(cuerpo(d)); }
+  function urlMail(d){
+    return "mailto:" + CORREO
+         + "?subject=" + encodeURIComponent("Consulta desde la web" + (d.nombre ? " — " + d.nombre : ""))
+         + "&body=" + encodeURIComponent(cuerpo(d));
+  }
+  function decir(html, tipo){
+    note.className = "ask__note" + (tipo ? " is-" + tipo : "");
+    note.innerHTML = html;
+  }
+
+  /* el botón de WhatsApp arrastra lo que ya se haya escrito */
+  form.addEventListener("input", function(){ if (wa) wa.href = urlWa(datos()); });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (val("_honey")) return;                       /* trampa para robots */
+
+    var d = datos();
+    if (!d.nombre || !d.contacto || !d.mensaje){
+      decir("Completa los tres campos para que podamos responderte.", "warn");
+      return;
+    }
+
+    if (!ENVIO_POR_CORREO){
+      window.open(urlWa(d), "_blank", "noopener");
+      decir('Te abrimos WhatsApp con el mensaje ya escrito. Si prefieres correo, <a href="' + urlMail(d) + '">envíalo desde aquí</a>.', "ok");
+      return;
+    }
+
+    send.disabled = true; send.textContent = "Enviando…";
+    fetch("https://formsubmit.co/ajax/" + CORREO, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "Consulta desde la web — " + d.nombre,
+        _template: "table",
+        Nombre: d.nombre,
+        Contacto: d.contacto,
+        Mensaje: d.mensaje
+      })
+    })
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(r); })
+    .then(function(){
+      form.reset();
+      if (wa) wa.href = "https://wa.me/" + WHATSAPP;
+      decir("Mensaje enviado. Te respondemos a la brevedad.", "ok");
+    })
+    .catch(function(){
+      window.open(urlWa(d), "_blank", "noopener");
+      decir('No pudimos enviarlo por correo. Te abrimos WhatsApp con el mensaje listo, o <a href="' + urlMail(d) + '">mándalo por correo</a>.', "warn");
+    })
+    .then(function(){ send.disabled = false; send.textContent = "Enviar mensaje"; });
+  });
 })();
 </script>

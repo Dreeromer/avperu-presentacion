@@ -9,20 +9,44 @@ Dos versiones del mismo diseño:
 | `index.html` + `img/` + `fonts/` | La versión publicada. Carga rápido porque las fotos son archivos aparte. |
 | `carta-offline.html` | Un solo archivo de 3.5 MB con todo dentro. Para USB, adjuntar por correo o presentar sin internet. |
 
-Ninguna de las dos pide nada a servidores externos.
+Las fotos y las tipografías son locales: la página no pide nada a servidores
+externos para mostrarse. La única salida a internet es el envío del formulario,
+y solo cuando alguien lo usa.
 
-## Qué falta rellenar
+## Datos de contacto
 
-Hay que hacerlo en **los dos** archivos (`index.html` y `carta-offline.html`).
-Busca `data-slot` — son 4 líneas seguidas, cerca del final — y reemplaza el texto
-entre corchetes:
+Ya están puestos en los dos archivos:
 
-    <li><b>Teléfono</b><span data-slot>[ teléfono ]</span></li>
-    <li><b>Correo</b><span data-slot>[ correo ]</span></li>
-    <li><b>Web</b><span data-slot>[ web ]</span></li>
-    <li><b>Dirección</b><span data-slot>[ dirección ]</span></li>
+- Teléfono / WhatsApp: **+51 987 262 309**
+- Correo: **comercial@grupoalvas.com**
 
-Ejemplo: `<span data-slot>+51 999 999 999</span>`
+No se muestra dirección ni enlace a la web (la web es esta misma página).
+
+## El formulario de contacto
+
+Al final de la página hay un formulario: nombre, correo o teléfono, y qué
+necesita el cliente.
+
+**Hoy, al enviarlo se abre WhatsApp con el mensaje ya escrito**, y además se
+ofrece un enlace para mandarlo por correo. Se hizo así porque el envío directo
+al correo (FormSubmit) manda un correo de activación a
+comercial@grupoalvas.com la primera vez, y aún no hay acceso a esa bandeja.
+
+### Para que los mensajes lleguen solos al correo
+
+1. Busca en `index.html` esta línea, cerca del final:
+
+       var ENVIO_POR_CORREO = false;
+
+   Cámbiala a `true`. Haz lo mismo en `carta-offline.html`.
+2. `git commit` y `git push`.
+3. Abre la página publicada, llena el formulario y envíalo una vez.
+4. Entra a **comercial@grupoalvas.com** y haz clic en el enlace de activación
+   que llega de FormSubmit.
+5. Desde ahí, cada mensaje llega solo a esa bandeja.
+
+Si el envío por correo falla por cualquier motivo, el formulario cae de vuelta
+en WhatsApp — no se pierde el contacto.
 
 ## Correcciones aplicadas al PPT original
 
@@ -40,11 +64,13 @@ Ejemplo: `<span data-slot>+51 999 999 999</span>`
 2. Quiénes somos
 3. Línea Clásica — carrusel cilíndrico 3D
 4. Línea Premium — mesa de kits
-5. Control de salida — banda a todo lo ancho
-6. Nuestra planta — recorrido lateral
-7. Logística integral — recorrido entre unidades
-8. Cómo trabajamos — 4 pasos
-9. Contacto
+5. Desarrollo a medida — lo que se puede hacer fuera de las dos líneas
+6. Control de salida — banda a todo lo ancho
+7. Nuestra planta — recorrido lateral
+8. Logística y entregas — recorrido entre unidades
+9. Cobertura, entrega final y multidestino — tres datos de reparto
+10. Cómo trabajamos — 4 pasos
+11. Contacto y formulario
 
 ## Notas técnicas
 
@@ -52,7 +78,10 @@ Ejemplo: `<span data-slot>+51 999 999 999</span>`
   desactivado, la página se muestra como catálogo estático completo y legible.
 - Respeta "reducir movimiento" del sistema: con esa preferencia activa se ve el
   mismo modo estático. Los tres estados están probados.
-- Probado en escritorio (1440px) y móvil (414px).
+- Probado en escritorio (1512px) y móvil (420px), con el formulario en sus
+  cuatro casos: campos vacíos, campo faltante, trampa antibots y envío válido.
 - Publicada con GitHub Pages desde la rama `main`. Para actualizarla: editar,
   `git commit`, `git push` — el sitio se reconstruye solo en un par de minutos.
-- Peso en línea: 43 KB de HTML + 2.4 MB de fotos que llegan en paralelo.
+- Se agregaron `<meta charset>` y `<meta viewport>`, que faltaban. Sin el
+  viewport el móvil dibujaba la página con ancho de escritorio.
+- Peso en línea: 59 KB de HTML + 2.4 MB de fotos que llegan en paralelo.
