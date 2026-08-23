@@ -802,6 +802,7 @@ section{position:relative}
   var floorTrack = document.getElementById("floorTrack");
   var floorPanels = [].slice.call(document.querySelectorAll(".floor__panel"));
   var dollySpace = document.getElementById("dollySpace");
+  var dollyCopy = document.querySelector(".dolly__copy");
   var band = document.getElementById("band");
   var bandImg = band ? band.querySelector("img") : null;
   var dollySlabs = [].slice.call(document.querySelectorAll(".dolly__slab"));
@@ -841,6 +842,25 @@ section{position:relative}
     dollySlabs.forEach(function(s,i){
       s.dataset.bz = (-(i * DOLLY_GAP) - 300);
     });
+    /* Bajo 820px el texto de logística pasa a columna y se vuelve alto: las
+       piezas tienen que caber por encima o le atraviesan el titular. */
+    if (dollySlabs.length && dollyCopy){
+      if (vw > 820){
+        dollySlabs.forEach(function(s){ s.style.width = s.style.height = s.style.marginTop = s.style.marginLeft = ""; });
+      } else {
+        var cs = window.getComputedStyle(dollyCopy);
+        var copyBlock = dollyCopy.offsetHeight + (parseFloat(cs.bottom) || 0);
+        var free = vh - copyBlock - 20;
+        var sh = Math.round(Math.max(190, Math.min(640, vh * 0.56, free)));
+        var sw = Math.round(Math.max(180, Math.min(470, vw * 0.72, sh * 0.72)));
+        dollySlabs.forEach(function(s){
+          s.style.width = sw + "px";
+          s.style.height = sh + "px";
+          s.style.marginLeft = (-sw / 2) + "px";
+          s.style.marginTop = (-sh / 2 - copyBlock / 2 - 10) + "px";
+        });
+      }
+    }
   }
 
   function clamp(v,a,b){ return v < a ? a : v > b ? b : v; }
